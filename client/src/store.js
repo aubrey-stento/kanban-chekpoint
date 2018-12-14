@@ -78,7 +78,10 @@ export default new Vuex.Store({
           commit('setUser', res.data)
           dispatch('getBoards')
           // router.push({ name: 'boards' })
-        }).catch
+        }).catch(err=>{
+          console.err('NOT LOGGED IN')
+          router.push({name: 'login'})
+        })
     },
     login({ commit, dispatch }, creds) {
       auth.post('login', creds)
